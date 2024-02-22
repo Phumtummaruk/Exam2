@@ -1,0 +1,15 @@
+C:\Users\Ter\Desktop\Programing2\Exam unit2\module2_assignment\assignment\bin\Debug\net8.0\connected_example.exe
+C:\Users\Ter\Desktop\Programing2\Exam unit2\module2_assignment\assignment\bin\Debug\net8.0\connected_example.deps.json
+C:\Users\Ter\Desktop\Programing2\Exam unit2\module2_assignment\assignment\bin\Debug\net8.0\connected_example.runtimeconfig.json
+C:\Users\Ter\Desktop\Programing2\Exam unit2\module2_assignment\assignment\bin\Debug\net8.0\connected_example.dll
+C:\Users\Ter\Desktop\Programing2\Exam unit2\module2_assignment\assignment\bin\Debug\net8.0\connected_example.pdb
+C:\Users\Ter\Desktop\Programing2\Exam unit2\module2_assignment\assignment\obj\Debug\net8.0\connected_example.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ter\Desktop\Programing2\Exam unit2\module2_assignment\assignment\obj\Debug\net8.0\connected_example.AssemblyInfoInputs.cache
+C:\Users\Ter\Desktop\Programing2\Exam unit2\module2_assignment\assignment\obj\Debug\net8.0\connected_example.AssemblyInfo.cs
+C:\Users\Ter\Desktop\Programing2\Exam unit2\module2_assignment\assignment\obj\Debug\net8.0\connected_example.csproj.CoreCompileInputs.cache
+C:\Users\Ter\Desktop\Programing2\Exam unit2\module2_assignment\assignment\obj\Debug\net8.0\connected_example.sourcelink.json
+C:\Users\Ter\Desktop\Programing2\Exam unit2\module2_assignment\assignment\obj\Debug\net8.0\connected_example.dll
+C:\Users\Ter\Desktop\Programing2\Exam unit2\module2_assignment\assignment\obj\Debug\net8.0\refint\connected_example.dll
+C:\Users\Ter\Desktop\Programing2\Exam unit2\module2_assignment\assignment\obj\Debug\net8.0\connected_example.pdb
+C:\Users\Ter\Desktop\Programing2\Exam unit2\module2_assignment\assignment\obj\Debug\net8.0\connected_example.genruntimeconfig.cache
+C:\Users\Ter\Desktop\Programing2\Exam unit2\module2_assignment\assignment\obj\Debug\net8.0\ref\connected_example.dll
