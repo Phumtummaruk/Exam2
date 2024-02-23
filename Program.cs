@@ -100,7 +100,6 @@ Console.WriteLine($"Answer: {Colors.Green}{string.Join(", ", answer3)}\n{task3An
 Console.WriteLine("\n\n");
 Console.WriteLine("\n----------------------------------------------------------------------\n");
 
-
 //task4
 taskID = "rEu25ZX";
 Response task4Response = await httpUtils.Get(baseURL + taskEndpoint + myPersonalID + "/" + taskID);
@@ -110,6 +109,33 @@ Console.WriteLine(task4Response);
 Task task4 = JsonSerializer.Deserialize<Task>(task4Response.content);
 Console.WriteLine($"TASK4: {ANSICodes.Effects.Bold}{task4?.title}{ANSICodes.Reset}\n{task4?.description}\nParameters: {Colors.Yellow}{task4?.parameters}{ANSICodes.Reset}");
 
+int RomanToInt(string s)
+{
+    Dictionary<char, int> romanValues = new Dictionary<char, int>
+    {
+        {'I', 1},
+        {'V', 5},
+        {'X', 10},
+        {'L', 50},
+        {'C', 100}
+    };
+
+    int total = 0;
+
+    for (int i = 0; i < s.Length; i++)
+    {
+        if (i < s.Length - 1 && romanValues[s[i]] < romanValues[s[i + 1]])
+            total -= romanValues[s[i]];
+        else
+            total += romanValues[s[i]];
+    }
+
+    return total;
+}
+
+int answer4 = RomanToInt(task4.parameters);
+Response task4answerResponse = await httpUtils.Post(baseURL + taskEndpoint + myPersonalID + "/" + taskID, answer4.ToString());
+Console.WriteLine($"Answer: {Colors.Green}{answer4}\n{task4answerResponse}{ANSICodes.Reset}");
 
 
 class Task
@@ -120,24 +146,3 @@ class Task
     public string? usierID { get; set; }
     public string? parameters { get; set; }
 }
-
-/*
-
-var answer3 = UniqueWordsAlphabetical(task3.parameters);
-string[] UniqueWordsAlphabetical(string input)
-{
-    // Split the input string into words
-    string[] words = input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-    // Remove duplicates by converting the array to a HashSet
-    HashSet<string> uniqueWordsSet = new HashSet<string>(words);
-
-    // Sort the unique words alphabetically
-    string[] sortedUniqueWords = uniqueWordsSet.OrderBy(word => word, StringComparer.OrdinalIgnoreCase).ToArray();
-
-    return sortedUniqueWords;
-
-    
-Response task3AnswerResponse = await httpUtils.Post(baseURL + taskEndpoint + myPersonalID + "/" + taskID, string.Join(", ", answer3));
-Console.WriteLine($"Answer: {Colors.Green}{string.Join(", ", answer3)}{ANSICodes.Reset}");
-}*/
