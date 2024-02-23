@@ -2,6 +2,8 @@
 using System.Text.Json;
 using AnsiTools;
 using Colors = AnsiTools.ANSICodes.Colors;
+using System.Linq;
+
 
 Console.Clear();
 Console.WriteLine("Starting Assignment 2");
@@ -54,6 +56,62 @@ var answer2 = task2?.parameters.Split(",").Select(p => FahrenheitToCelsius(doubl
 Response task2AnswerResponse = await httpUtils.Post(baseURL + taskEndpoint + myPersonalID + "/" + taskID, string.Join(", ", answer2));
 Console.WriteLine($"Answer: {Colors.Green}{string.Join(", ", answer2)}\n{task2AnswerResponse}{ANSICodes.Reset}");
 
+
+Console.WriteLine("\n\n");
+Console.WriteLine("\n----------------------------------------------------------------------\n");
+
+//task3
+taskID = "otYK2";
+Response task3Response = await httpUtils.Get(baseURL + taskEndpoint + myPersonalID + "/" + taskID);
+Console.WriteLine(task3Response);
+
+
+Task task3 = JsonSerializer.Deserialize<Task>(task3Response.content);
+Console.WriteLine($"TASK3: {ANSICodes.Effects.Bold}{task3?.title}{ANSICodes.Reset}\n{task3?.description}\nParameters: {Colors.Yellow}{task3?.parameters}{ANSICodes.Reset}");
+
+string uniqueWords(string input)
+{
+
+    string[] words = input.Split(',');
+
+    List<string> uniqueList = new List<string>();
+
+    foreach (string word in words)
+    {
+        string cleanWord = word.Trim();
+        cleanWord = cleanWord.ToLower();
+        if (!uniqueList.Any(w => w.ToLower() == cleanWord))
+        {
+            uniqueList.Add(cleanWord);
+        }
+    }
+
+    uniqueList.Sort();
+
+    return string.Join(",", uniqueList.Select(w => char.ToUpper(w[0]) + w.Substring(1)));
+}
+
+string input = task3?.parameters ?? "";
+string answer3 = uniqueWords(input);
+Response task3AnswerResponse = await httpUtils.Post(baseURL + taskEndpoint + myPersonalID + "/" + taskID, answer3);
+Console.WriteLine($"Answer: {Colors.Green}{string.Join(", ", answer3)}\n{task3AnswerResponse}{ANSICodes.Reset}");
+
+
+Console.WriteLine("\n\n");
+Console.WriteLine("\n----------------------------------------------------------------------\n");
+
+
+//task4
+taskID = "rEu25ZX";
+Response task4Response = await httpUtils.Get(baseURL + taskEndpoint + myPersonalID + "/" + taskID);
+Console.WriteLine(task4Response);
+
+
+Task task4 = JsonSerializer.Deserialize<Task>(task4Response.content);
+Console.WriteLine($"TASK4: {ANSICodes.Effects.Bold}{task4?.title}{ANSICodes.Reset}\n{task4?.description}\nParameters: {Colors.Yellow}{task4?.parameters}{ANSICodes.Reset}");
+
+
+
 class Task
 {
     public string? title { get; set; }
@@ -62,3 +120,24 @@ class Task
     public string? usierID { get; set; }
     public string? parameters { get; set; }
 }
+
+/*
+
+var answer3 = UniqueWordsAlphabetical(task3.parameters);
+string[] UniqueWordsAlphabetical(string input)
+{
+    // Split the input string into words
+    string[] words = input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+    // Remove duplicates by converting the array to a HashSet
+    HashSet<string> uniqueWordsSet = new HashSet<string>(words);
+
+    // Sort the unique words alphabetically
+    string[] sortedUniqueWords = uniqueWordsSet.OrderBy(word => word, StringComparer.OrdinalIgnoreCase).ToArray();
+
+    return sortedUniqueWords;
+
+    
+Response task3AnswerResponse = await httpUtils.Post(baseURL + taskEndpoint + myPersonalID + "/" + taskID, string.Join(", ", answer3));
+Console.WriteLine($"Answer: {Colors.Green}{string.Join(", ", answer3)}{ANSICodes.Reset}");
+}*/
