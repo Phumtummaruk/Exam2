@@ -35,8 +35,24 @@ Response task1AnswerResponse = await httpUtils.Post(baseURL + taskEndpoint + myP
 Console.WriteLine($"Answer: {Colors.Green}{answer}\n {task1AnswerResponse}{ANSICodes.Reset}");
 
 
+Console.WriteLine("\n\n");
+Console.WriteLine("\n----------------------------------------------------------------------\n");
 
+//task2
+taskID = "aAaa23";
+Response task2Response = await httpUtils.Get(baseURL + taskEndpoint + myPersonalID + "/" + taskID);
+Console.WriteLine(task2Response);
 
+Task task2 = JsonSerializer.Deserialize<Task>(task2Response.content);
+Console.WriteLine($"TASK2: {ANSICodes.Effects.Bold}{task2?.title}{ANSICodes.Reset}\n{task2?.description}\nParameters: {Colors.Yellow}{task2?.parameters}{ANSICodes.Reset}");
+double FahrenheitToCelsius(double fahrenheit)
+{
+    return (fahrenheit - 32) * 5 / 9;
+}
+var answer2 = task2?.parameters.Split(",").Select(p => FahrenheitToCelsius(double.Parse(p.Trim()))).Select(a => a.ToString("F2")).ToList();
+
+Response task2AnswerResponse = await httpUtils.Post(baseURL + taskEndpoint + myPersonalID + "/" + taskID, string.Join(", ", answer2));
+Console.WriteLine($"Answer: {Colors.Green}{string.Join(", ", answer2)}\n{task2AnswerResponse}{ANSICodes.Reset}");
 
 class Task
 {
